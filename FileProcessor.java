@@ -17,8 +17,18 @@ public class FileProcessor {
                 // TODO: Process each line of the input file here.
                 String line = scan.nextLine();
                 for (int i = 0; i < line.length(); i++){
-                    Node number = new Node(line.charAt(i));
-                    numbers.head = number;
+                    char c = line.charAt(i);
+                    Node number = new Node(Character.getNumericValue(c));
+                    //numbers.head = number;
+                    numbers.num_items++;
+                    if (numbers.num_items == 1){
+                        numbers.head = number;
+                        continue;
+                    }
+                    else{
+                        number.setNext(numbers.head);
+                        numbers.head = number;
+                    }
                 }
                 System.out.println(line);
             }
