@@ -1,11 +1,25 @@
 public class Node {
     private int item;
-    private int next;
-    private int prev;
+    private Node next = this;
+    private Node prev = this;
     //constructor
     public Node(int item) {
         this.item = item;
-        //this.next = next;
-        //this.prev = prev;
+    }
+    // getters
+    public Node getNext(){
+        return this.next;
+    }
+    public Node getPrev(){
+        return this.prev;
+    }
+
+
+    // setters
+    public void setNext(Node node){
+        this.next = node;
+    }
+    public void setPrev(Node node){
+        this.prev = node;
     }
 }
