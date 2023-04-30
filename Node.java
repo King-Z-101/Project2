@@ -3,9 +3,9 @@ public class Node {
     private int next;
     private int prev;
     //constructor
-    public Node(int item, int next, int prev) {
+    public Node(int item) {
         this.item = item;
-        this.next = next;
-        this.prev = prev;
+        //this.next = next;
+        //this.prev = prev;
     }
 }
