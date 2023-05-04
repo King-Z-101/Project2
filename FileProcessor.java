@@ -35,12 +35,18 @@ public class FileProcessor {
                 for (int i = 0; i < numbers.num_items; i++){
                     //start at header node and move through the linked list until we find the operator we're working with
                     if (indexNode.getItem() == 43) { //addition ascii
+                        Addition add = new Addition();
+                        add.add(numbers);
 
                     }
                     else if (indexNode.getItem() == 42){ //Multiplication ascii
+                        Multiplication mult = new Multiplication();
+                        mult.multiplication(numbers);
 
                     }
                     else if (indexNode.getItem() == 94){   //exponent ascii
+                        Exponential exponent = new Exponential();
+                        exponent.exponent(numbers);
 
                     }
                     indexNode = indexNode.getNext();
