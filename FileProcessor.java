@@ -17,8 +17,8 @@ public class FileProcessor {
                 // TODO: Process each line of the input file here.
                 String line = scan.nextLine();
                 for (int i = 0; i < line.length(); i++){
-                    char c = line.charAt(i);
-                    Node number = new Node(Character.getNumericValue(c));
+                    char c = line.charAt(i);   //u can use getNumericValue to find value/number passed
+                    Node number = new Node(c);
                     //numbers.head = number;
                     numbers.num_items++;
                     if (numbers.num_items == 1){
@@ -31,6 +31,20 @@ public class FileProcessor {
                     }
                 }
                 System.out.println(line);
+                Node indexNode = numbers.head;
+                for (int i = 0; i < numbers.num_items; i++){
+                    //start at header node and move through the linked list until we find the operator we're working with
+                    if (indexNode.getItem() == 43) { //addition ascii
+
+                    }
+                    else if (indexNode.getItem() == 42){ //Multiplication ascii
+
+                    }
+                    else if (indexNode.getItem() == 94){   //exponent ascii
+
+                    }
+                    indexNode = indexNode.getNext();
+                }
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + infile.getPath());
