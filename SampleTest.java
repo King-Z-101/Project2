@@ -70,9 +70,19 @@ public class SampleTest {
         list2.add_to_list(0);
         Addition addTest = new Addition();
         assertEquals(addTest.add(list1, list2), "13");
-
-
     }
+
+    @Test
+    public void testAdd3() {
+        LinkedList list1 = new LinkedList();
+        LinkedList list2 = new LinkedList();
+        list1.add_to_list(3);
+        list1.add_to_list(1);
+        list2.add_to_list(1);
+        Addition addTest = new Addition();
+        assertEquals(addTest.add(list1, list2), "32");
+    }
+
 
     /**
      * Gets called after each test method. Need to do this so that we are
