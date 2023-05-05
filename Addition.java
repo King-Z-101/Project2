@@ -4,12 +4,22 @@ public class Addition {
         int length_diff = Math.abs(list1.num_items - list2.num_items);
         if (list1.num_items < list2.num_items){
             for (int i = 0; i < length_diff; i++){
-                list1.add_to_list(0);
+                Node pad = new Node(0);
+                Node temp = list1.head;
+                list1.head = pad;
+                pad.setNext(temp);
+                list1.num_items++;
+                //list1.add_to_list(0);
             }
         }
         if (list1.num_items > list2.num_items){
             for (int i = 0; i < length_diff; i++){
-                list2.add_to_list(0);
+                Node pad = new Node(0);
+                Node temp = list2.head;
+                list2.head = pad;
+                pad.setNext(temp);
+                list2.num_items++;
+                //list2.add_to_list(0);
             }
         }
         // for example 123 + 3 becomes 123 + 003
