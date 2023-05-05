@@ -17,7 +17,7 @@ public class Addition {
         Node node2 = list2.head;
         int carry = 0;
         StringBuilder string_result = new StringBuilder();
-        while (node1 != null || node2 != null) {
+        while (node1 != null && node2 != null) {
             int sum = node1.getItem() +node2.getItem() + carry;
             carry = sum / 10; //should be like a remainder
             int digit_result = sum % 10;
@@ -28,6 +28,6 @@ public class Addition {
         if (carry > 0){
             string_result.append(carry);
         }
-        return string_result.reverse().toString();
+        return string_result.toString();
     }
 }
