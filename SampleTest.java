@@ -50,6 +50,30 @@ public class SampleTest {
                 "2 ^ 40 = 1099511627776", output);
     }
 
+    @Test
+    public void testAdd1() {
+        LinkedList list1 = new LinkedList();
+        LinkedList list2 = new LinkedList();
+        list1.add_to_list(5);
+        list1.add_to_list(2);
+        list2.add_to_list(3);
+        list2.add_to_list(3);
+        Addition addTest = new Addition();
+        assertEquals(addTest.add(list1, list2), "85");
+    }
+    @Test
+    public void testAdd2() {
+        LinkedList list1 = new LinkedList();
+        LinkedList list2 = new LinkedList();
+        list1.add_to_list(3);
+        list2.add_to_list(1);
+        list2.add_to_list(0);
+        Addition addTest = new Addition();
+        assertEquals(addTest.add(list1, list2), "13");
+
+
+    }
+
     /**
      * Gets called after each test method. Need to do this so that we are
      * no longer capturing all printed output and printed stuff appears
