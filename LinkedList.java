@@ -21,4 +21,10 @@ public class LinkedList {
             current.setNext(newNode);
         }
     }
+
+    public void clear_list() {
+        Node temp = this.head;
+        temp.setNext(null);
+        this.num_items = 0;
+    }
 }
