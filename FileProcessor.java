@@ -60,18 +60,25 @@ public class FileProcessor {
                     }
                 }
                 System.out.println(line);
+                Format format = new Format();
+                String result = "";
                 if (operator == 1){
                     Addition addition = new Addition();
-                    addition.add(left,right);
+                    result = addition.add(left,right);
+                    //correctly formats the output line (new class created)
+                    format.formatOutput(left, right, operator, result);
                 }
-//                else if (operator == 2){
-//                    Multiplication multiplication = new Multiplication();
-//                    Multiplication.mult(left,right);
-//                }
-//                else if (operator == 3){
-//                    Exponential exponential = new Exponential();
-//                    exponential.exponent(left, right);
-//                }
+                else if (operator == 2){
+                    Multiplication Mult = new Multiplication();
+                    Mult.multiplication(left,right);
+                    //format.formatOutput(left, right, operator, );
+                }
+                else if (operator == 3){
+                    Exponential exponential = new Exponential();
+                    result = exponential.exponent(left, right);
+                    format.formatOutput(left, right, operator, result);
+                    return;
+                }
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + infile.getPath());
