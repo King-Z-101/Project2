@@ -1,6 +1,6 @@
 public class Exponential {
     public String exponent(LinkedList list1, LinkedList list2){
-        int result;
+        long result;
         StringBuilder x = new StringBuilder();
         StringBuilder n = new StringBuilder();
         boolean left = true;
@@ -38,7 +38,7 @@ public class Exponential {
         result = exp_by_squaring(integer, exponent);
         return String.valueOf(result);
     }
-    public int exp_by_squaring(int x, int n) {
+    public long exp_by_squaring(long x, long n) {
         if (n < 0) {
             return exp_by_squaring(1 / x, -n);
         }
