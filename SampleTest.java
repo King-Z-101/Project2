@@ -83,6 +83,30 @@ public class SampleTest {
         assertEquals(addTest.add(list1, list2), "32");
     }
 
+    @Test
+    public void testMult1(){
+        LinkedList list1 = new LinkedList();
+        LinkedList list2 = new LinkedList();
+        /** 1 * 24 **/
+        list1.add_to_list(1);
+        list2.add_to_list(2);
+         Multiplication multTest = new Multiplication();
+         assertEquals(multTest.multiplication(list1, list2), "2");
+    }
+
+    @Test
+    public void testMult2(){
+        LinkedList list1 = new LinkedList();
+        LinkedList list2 = new LinkedList();
+        /** 1 * 24 **/
+        list1.add_to_list(1);
+        list2.add_to_list(2);
+        list2.add_to_list(4);
+        // right now it is doing (1 * 2) + (1 * 4) !!
+        Multiplication multTest = new Multiplication();
+        assertEquals(multTest.multiplication(list1, list2), "24");
+    }
+
 
     /**
      * Gets called after each test method. Need to do this so that we are
