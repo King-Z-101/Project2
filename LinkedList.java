@@ -27,4 +27,14 @@ public class LinkedList {
         temp.setNext(null);
         this.num_items = 0;
     }
+
+    public String toString() {
+        StringBuilder SB = new StringBuilder();
+        Node current = this.head;
+        while (current != null) {
+            SB.append(current.getItem());
+            current = current.getNext();
+        }
+        return SB.toString();
+    }
 }
