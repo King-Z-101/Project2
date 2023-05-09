@@ -6,7 +6,19 @@ public class Format {
         //boolean result = false;
         Node current1 = list1.head;
         Node current2 = list2.head;
-        //Node current3 = list3.head;
+        //deleting leftover 0's
+        if (current1.getItem() == 0)
+        {
+            while (current1.getItem() == 0){
+                current1 = current1.getNext();
+            }
+        }
+        if (current2.getItem() == 0)
+        {
+            while (current2.getItem() == 0){
+                current2 = current2.getNext();
+            }
+        }
         while (left == true){
             output += current1.getItem();
             if (current1.getNext() == null){
