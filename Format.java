@@ -1,6 +1,6 @@
 public class Format {
     private String output = "";
-    public void formatOutput(LinkedList list1, LinkedList list2, int operator,String result){
+    public String formatOutput(LinkedList list1, LinkedList list2, int operator,String result){
         boolean left = true;
         boolean right = false;
         //boolean result = false;
@@ -53,6 +53,7 @@ public class Format {
 //            }
 //        }
 
+        return output;
     }
 
     public void setOutput(String output) {
