@@ -82,6 +82,18 @@ public class SampleTest {
         Addition addTest = new Addition();
         assertEquals(addTest.add(list1, list2), "32");
     }
+    @Test
+    public void testAdd4() {
+        LinkedList list1 = new LinkedList();
+        LinkedList list2 = new LinkedList();
+        list1.add_to_list(2);
+        list1.add_to_list(0);
+        list1.add_to_list(4);
+        list2.add_to_list(6);
+        list2.add_to_list(9);
+        Addition addTest = new Addition();
+        assertEquals(addTest.add(list1, list2), "273");
+    }
 
     @Test
     public void testMult1(){
@@ -108,6 +120,17 @@ public class SampleTest {
     }
 
     @Test
+    public void testMult3(){
+        LinkedList list1 = new LinkedList();
+        LinkedList list2 = new LinkedList();
+        list1.add_to_list(3);
+        list2.add_to_list(4);
+        // right now it is doing (1 * 2) + (1 * 4) !!
+        Multiplication multTest = new Multiplication();
+        assertEquals(multTest.multiplication(list1, list2), "12");
+    }
+
+    @Test
     public void testExpFile() {
         BigNumArithmetic.main(new String[] { "exponentTest.txt" });
         String output = this.baos.toString();
@@ -124,8 +147,19 @@ public class SampleTest {
         assertEquals("1 + 2 = 3\n" +
                 "2 + 4 = 6\n" +
                 "10 + 20 = 30\n" +
-                "204 + 69 = 2631", output); //this one is wrong
+                "204 + 69 = 273", output);
     }
+
+    @Test
+    public void testmultFile() {
+        BigNumArithmetic.main(new String[] { "multTest.txt" });
+        String output = this.baos.toString();
+        assertEquals("3 * 4 = 21\n" +
+                "41 * 2 = 28\n" +
+                "41 * 21 = 861\n" +
+                "8 * 71 = 541", output);
+    }
+
 
 
     /**
