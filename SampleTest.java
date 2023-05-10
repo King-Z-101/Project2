@@ -90,8 +90,8 @@ public class SampleTest {
         /** 1 * 24 **/
         list1.add_to_list(1);
         list2.add_to_list(2);
-         Multiplication multTest = new Multiplication();
-         assertEquals(multTest.multiplication(list1, list2), "2");
+        Multiplication multTest = new Multiplication();
+        assertEquals(multTest.multiplication(list1, list2), "2");
     }
 
     @Test
@@ -105,6 +105,26 @@ public class SampleTest {
         // right now it is doing (1 * 2) + (1 * 4) !!
         Multiplication multTest = new Multiplication();
         assertEquals(multTest.multiplication(list1, list2), "24");
+    }
+
+    @Test
+    public void testExpFile() {
+        BigNumArithmetic.main(new String[] { "exponentTest.txt" });
+        String output = this.baos.toString();
+        assertEquals("21 ^ 10 = 16679880978201\n" +
+                "2 ^ 40 = 1099511627776\n" +
+                "3 ^ 9 = 19683\n" +
+                "6 ^ 9 = 10077696", output);
+    }
+
+    @Test
+    public void testaddFile() {
+        BigNumArithmetic.main(new String[] { "additionTest.txt" });
+        String output = this.baos.toString();
+        assertEquals("1 + 2 = 3\n" +
+                "2 + 4 = 6\n" +
+                "10 + 20 = 30\n" +
+                "204 + 69 = 2631", output); //this one is wrong
     }
 
 
