@@ -3,33 +3,31 @@ public class Format {
     public String formatOutput(LinkedList list1, LinkedList list2, int operator,String result){
         boolean left = true;
         boolean right = false;
-        //boolean result = false;
+        StringBuilder leftNum = new StringBuilder();
+        StringBuilder rightNum = new StringBuilder();
         Node current1 = list1.head;
         Node current2 = list2.head;
         //deleting leftover 0's
-        if (current1.getItem() == 0)
-        {
-            while (current1.getItem() == 0){
-                current1 = current1.getNext();
-            }
+        while (current1 != null){
+            leftNum.append(current1.getItem());
+            current1 = current1.getNext();
         }
-        if (current2.getItem() == 0)
-        {
-            while (current2.getItem() == 0){
-                current2 = current2.getNext();
-            }
-        }
-        while (left == true){
-            output += current1.getItem();
-            if (current1.getNext() == null){
-                left = false;
-                right = true;
-                continue;
+        StringBuilder normalLeft = new StringBuilder();
+        normalLeft = leftNum.reverse();
+        boolean deleteLeft = true;
+        int j = 0;
+        while (deleteLeft == true){
+            if (Character.getNumericValue(normalLeft.charAt(0)) == 0){
+                normalLeft.deleteCharAt(j);
+                j++;
             }
             else {
-                current1 = current1.getNext();
+                deleteLeft = false;
             }
+
         }
+        output += normalLeft;
+
         if (operator == 1 /*addition*/ ){
             output += " + ";
         }
@@ -39,31 +37,28 @@ public class Format {
         else if (operator == 3 /*exponent*/ ){
             output += " ^ ";
         }
-        while (right == true){
-            output += current2.getItem();
-            if (current2.getNext() == null){
-                right = false;
-                //result = true;
-                continue;
+
+        while (current2 != null){
+            rightNum.append(current2.getItem());
+            current2 = current2.getNext();
+        }
+        StringBuilder normalRight = new StringBuilder();
+        normalRight = rightNum.reverse();
+        boolean deleteRight = true;
+        int i = 0;
+        while (deleteRight == true){
+            if (Character.getNumericValue(normalRight.charAt(0)) == 0){
+                normalRight.deleteCharAt(i);
+                i++;
             }
             else {
-                current2 = current2.getNext();
+                deleteRight = false;
             }
-        }
 
+        }
+        output += normalRight;
         output += " = ";
         output += result;
-
-//        while (result == true){
-//            output += current3.getItem();
-//            if (current3.getNext() == null){
-//                result = false;
-//                continue;
-//            }
-//            else {
-//                current3 = current3.getNext();
-//            }
-//        }
 
         return output;
     }
