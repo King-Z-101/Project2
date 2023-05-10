@@ -32,8 +32,8 @@ public class Exponential {
             }
         }
         //now we have the x^n as strings (need to be converted to integers
-        int integer = Integer.parseInt(x.toString());
-        int exponent = Integer.parseInt(n.toString());
+        int integer = Integer.parseInt(x.reverse().toString());
+        int exponent = Integer.parseInt(n.reverse().toString());
         //use the algorithm to find the result (call exp_by_squaring)
         result = exp_by_squaring(integer, exponent);
         return String.valueOf(result);
