@@ -1,5 +1,6 @@
 public class LinkedList {
     public Node head;
+    public Node tail;
     public int num_items;
     public LinkedList() {
         this.head = null; //default head pointer
@@ -12,13 +13,10 @@ public class LinkedList {
         this.num_items++;
         if (head == null) {
             head = newNode;
-
+            tail = newNode;
         } else {
-            Node current = head;
-            while (current.getNext() != null) {
-                current = current.getNext();
-            }
-            current.setNext(newNode);
+            newNode.setNext(head);
+            head = newNode;
         }
     }
 
