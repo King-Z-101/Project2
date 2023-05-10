@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Multiplication {
     public String multiplication(LinkedList list1, LinkedList list2) {
+        int rightNum = list2.num_items;
         Addition add = new Addition();
         if (list1.head == null || list2.head == null) {
             return "";
@@ -71,6 +72,11 @@ public class Multiplication {
             result.append(current.getItem());
             current = current.getNext();
         }
-        return result.toString();
+        if (rightNum == 1){
+            return result.reverse().toString();
+        }
+        else {
+            return result.toString();
+        }
     }
 }
