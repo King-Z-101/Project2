@@ -35,4 +35,39 @@ public class LinkedList {
         }
         return SB.toString();
     }
+
+    public void addZeroToEnd(){
+        Node newNode = new Node(0);
+        this.num_items++;
+        if (head == null){
+            head = newNode;
+            tail = newNode;
+
+        } else {
+            tail.setNext(newNode);
+            tail = newNode;
+        }
+    }
+
+    public void add_to_tail(int number) {
+        Node newNode = new Node(number);
+        this.num_items++;
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.setNext(newNode);
+            tail = newNode;
+        }
+    }
+
+    public LinkedList reverseLinkedList() {
+        LinkedList reversedList = new LinkedList();
+        Node currentNode = this.head;
+        while (currentNode != null) {
+            reversedList.add_to_list(currentNode.getItem());
+            currentNode = currentNode.getNext();
+        }
+        return reversedList;
+    }
 }
