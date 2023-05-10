@@ -5,21 +5,17 @@ public class Addition {
         if (list1.num_items < list2.num_items){
             for (int i = 0; i < length_diff; i++){
                 Node pad = new Node(0);
-                Node temp = list1.head;
-                list1.head = pad;
-                pad.setNext(temp);
+                list1.tail.setNext(pad);
+                list1.tail = pad;
                 list1.num_items++;
-                //list1.add_to_list(0);
             }
         }
         if (list1.num_items > list2.num_items){
             for (int i = 0; i < length_diff; i++){
                 Node pad = new Node(0);
-                Node temp = list2.head;
-                list2.head = pad;
-                pad.setNext(temp);
+                list2.tail.setNext(pad);
+                list2.tail = pad;
                 list2.num_items++;
-                //list2.add_to_list(0);
             }
         }
         // for example 123 + 3 becomes 123 + 003
@@ -38,6 +34,6 @@ public class Addition {
         if (carry > 0){
             string_result.append(carry);
         }
-        return string_result.toString();
+        return string_result.reverse().toString();
     }
 }
