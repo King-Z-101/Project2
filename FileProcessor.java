@@ -56,11 +56,12 @@ public class FileProcessor {
                         right.add_to_list(Character.getNumericValue(n));
                     }
                 }
-                System.out.println(line);
                 String outputLine = "";
                 Format format = new Format();
                 boolean plugText = false;
                 String result = "";
+                //LinkedList oldLeft = left;
+                //LinkedList oldRight = right;
                 if (operator == 1){
                     Addition addition = new Addition();
                     result = addition.add(left,right);
@@ -81,7 +82,15 @@ public class FileProcessor {
                     plugText = true;
                 }
                 if (plugText == true){
-                    outFile.println(outputLine);
+                    //check whether to use println or print
+                    if(scan.hasNext() == true){
+                        outFile.println(outputLine);
+                        System.out.println(outputLine);
+                    }
+                    else {
+                        outFile.print(outputLine);
+                        System.out.print(outputLine);
+                    }
                 }
             }
         } catch (FileNotFoundException e) {
