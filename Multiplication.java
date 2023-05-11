@@ -1,113 +1,62 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Multiplication {
-    public String multiplication(LinkedList list1, LinkedList list2) {
-
-        //int rightNum = list2.num_items;
-        StringBuilder result = new StringBuilder();
-        Addition add = new Addition();
-        int carry = 0;
-        int digit = 0;
-        int product1 = 0;
-        if (list1.head == null || list2.head == null) {
+    public String multiply(LinkedList list1, LinkedList list2) {
+        if (list1 == null || list2 == null || list1.head == null || list2.head == null) {
             return "";
         }
 
+        LinkedList resultList = new LinkedList();
         Node leftHead = list1.head;
-        Node rightHead = list2.head;
-        while (rightHead != null && leftHead != null){
-            product1 = (leftHead.getItem() * rightHead.getItem()) + carry;
-            if (carry != 0){
-                //reset carry
-                carry = 0;
+        int leftPadding = 0;
+        Addition addition = new Addition();
+
+        while (leftHead != null) {
+            int carry = 0;
+            int leftDigit = leftHead.getItem();
+            Node rightHead = list2.head;
+            LinkedList currentProductList = new LinkedList();
+
+            for (int i = 0; i < leftPadding; i++) {
+                currentProductList.add_to_tail(0);
             }
-            String productStr = String.valueOf(product1);
-            if (productStr.length() > 1){
-                //store carry value
-                 carry = Character.getNumericValue(productStr.charAt(0));
-                 digit = Character.getNumericValue(productStr.charAt(1));
+
+            while (rightHead != null) {
+                int rightDigit = rightHead.getItem();
+                int product = leftDigit * rightDigit + carry;
+                carry = product / 10;
+                currentProductList.add_to_tail(product % 10);
+                rightHead = rightHead.getNext();
             }
-            else {
-                digit = Character.getNumericValue(productStr.charAt(0));
+
+            if (carry > 0) {
+                currentProductList.add_to_tail(carry);
             }
-            result.append(digit);
-            rightHead = rightHead.getNext();
-//            if (rightHead != null){
-//                //this is where u add the carry value
-//                product1 = leftHead.getItem() * rightHead.getItem() + carry;
-//            }
+
+            resultList = addLinkedLists(resultList, currentProductList, addition);
+            leftHead = leftHead.getNext();
+            leftPadding++;
         }
-        return result.reverse().toString();
-//        Node current2 = list2.head;
-//        LinkedList products1 = new LinkedList();
-//        LinkedList products2 = new LinkedList();
-//        int iterations = 0;
-//        while (!(current2 == null)) {
-//            LinkedList partialProduct = new LinkedList();
-//            int carry = 0;
-//            Node current1 = list1.head;
-//            while (!(current1 == null)) {
-//                int product = (current1.getItem() * current2.getItem()) + carry;
-//                int digit = product % 10;
-//                carry = product / 10;
-//                partialProduct.add_to_tail(digit);
-//                current1 = current1.getNext();
-//            }
-//            if (carry > 0) {
-//                List<Integer> carry_list = new ArrayList<>();
-//                while (carry > 0) {
-//                    carry_list.add(carry % 10);
-//                    carry /= 10;
-//                }
-//                for (int i = carry_list.size() - 1; i >= 0; i--) {
-//                    partialProduct.add_to_tail(carry_list.get(i));
-//                }
-//            }
-//            iterations++;
-//            if (iterations == 1) {
-//                products1 = partialProduct;
-//            } else {
-//                int numZeros = iterations - 1;
-//                LinkedList shifted = new LinkedList();
-//                Node shiftedNode = products1.head;
-//                while (shiftedNode != null) {
-//                    shifted.add_to_tail(shiftedNode.getItem());
-//                    shiftedNode = shiftedNode.getNext();
-//                }
-//                for (int i = 0; i < numZeros; i++) {
-//                    shifted.addZeroToEnd();
-//                }
-//                products2 = partialProduct;
-//
-//                // Reverse the linked lists before sending to the Addition class
-//                LinkedList reversedShifted = shifted.reverseLinkedList();
-//                LinkedList reversedProducts2 = products2.reverseLinkedList();
-//
-//                LinkedList tempLL = new LinkedList();
-//                String products1_as_string = add.add(reversedShifted, reversedProducts2);
-//
-//                // Reverse the result received from the Addition class
-//                String reversedResult = new StringBuilder(products1_as_string).reverse().toString();
-//
-//                for (int i = 0; i < reversedResult.length(); i++) {
-//                    tempLL.add_to_tail(Character.getNumericValue(reversedResult.charAt(i)));
-//                }
-//                products1 = tempLL;
-//            }
-//            current2 = current2.getNext();
-//        }
-//        StringBuilder result = new StringBuilder();
-//        Node current = products1.head;
-//        while (current != null) {
-//            result.append(current.getItem());
-//            current = current.getNext();
-//        }
-//        if (rightNum == 1){
-//            return result.reverse().toString();
-//        }
-//        else {
-//            return result.toString();
-//        }
+
+        resultList = resultList.reverseLinkedList();
+        return resultList.toString();
+    }
+
+    private LinkedList addLinkedLists(LinkedList list1, LinkedList list2, Addition addition) {
+        if (list1 == null || list1.head == null) {
+            return list2;
+        }
+
+        if (list2 == null || list2.head == null) {
+            return list1;
+        }
+
+        String sumStr = addition.add(list1, list2);
+        LinkedList result = new LinkedList();
+
+        for (int i = 0; i < sumStr.length(); i++) {
+            int digit = Character.getNumericValue(sumStr.charAt(i));
+            result.add_to_list(digit);
+        }
+
+        return result;
     }
 }
